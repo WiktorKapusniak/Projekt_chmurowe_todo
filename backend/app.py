@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 import json
 import pika
+import os
+
 app = Flask(__name__)
 
-RABBITMQ_HOST = 'rabbitmq' #nazwa kontenera rabbitmq
+RABBITMQ_HOST = os.getenv('RABBITMQ_HOST', 'rabbitmq') # dla pewnosci pobieramy nazwe kontenera RabbitMQ z zmiennej srodowiskowej ustawionej w docker-compose
 QUEUE_NAME = 'tasks'
 
 def send_to_queue(task_data):
