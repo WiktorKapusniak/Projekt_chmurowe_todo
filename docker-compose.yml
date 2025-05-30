@@ -41,6 +41,16 @@ services:
       - "15672:15672" # Port managament UI
     networks:
       - app-network
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - app-network
 
 networks:
   app-network:
