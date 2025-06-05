@@ -30,5 +30,6 @@ def get_tasks():
     tasks = list(tasks_collection.find({}, {'_id': 0}))
     return jsonify(tasks)
 
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

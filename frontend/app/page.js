@@ -6,9 +6,8 @@ export default function Home() {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState("");
 
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const apiUrl = "http://localhost:5000";
 
-  // Funkcja do pobierania tasków z backendu
   const fetchTasks = async () => {
     try {
       const response = await fetch(`${apiUrl}/tasks`);
@@ -19,13 +18,10 @@ export default function Home() {
     }
   };
 
-  // Pobieranie tasków przy ładowaniu strony
   useEffect(() => {
     fetchTasks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Obsługa dodawania nowego taska
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -44,7 +40,7 @@ export default function Home() {
 
       if (response.ok) {
         setTitle("");
-        fetchTasks(); // Po dodaniu taska odświeżamy listę
+        fetchTasks();
       } else {
         console.error("Błąd przy dodawaniu taska");
       }

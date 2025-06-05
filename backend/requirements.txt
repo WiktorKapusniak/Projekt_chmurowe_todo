@@ -1,2 +1,4 @@
-flask
+Flask
 pika
+pymongo
+flask-cors
